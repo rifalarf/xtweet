@@ -21,9 +21,14 @@ try:
     GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
 except KeyError as e:
     st.error(
-        f"secret {e} tidak ditemukan. "
-        "salin .streamlit/secrets.toml.example ke .streamlit/secrets.toml "
-        "dan isi dengan nilai yang sebenarnya."
+        f"secret '{e.args[0]}' tidak ditemukan.\n\n"
+        "**Untuk pengembangan lokal:** salin `.streamlit/secrets.toml.example` "
+        "ke `.streamlit/secrets.toml` dan isi dengan nilai yang sebenarnya.\n\n"
+        "**Untuk Streamlit Community Cloud:** buka menu "
+        "**App Settings → Secrets** dan tambahkan semua variabel yang diperlukan "
+        "(X_CONSUMER_KEY, X_CONSUMER_SECRET, X_ACCESS_TOKEN, X_ACCESS_TOKEN_SECRET, GOOGLE_API_KEY). "
+        "Lihat `.streamlit/secrets.toml.example` untuk referensi nama variabel. "
+        "Info lebih lanjut: https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/secrets-management"
     )
     st.stop()
 
